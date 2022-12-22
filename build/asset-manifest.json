@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.js": "/static/js/main.7515abba.js",
+    "static/js/787.5465e5f7.chunk.js": "/static/js/787.5465e5f7.chunk.js",
+    "static/media/therapy-robot.png": "/static/media/therapy-robot.26f48d127496a9387518.png",
+    "static/media/analysis.png": "/static/media/analysis.dcd2074bb36eee8be120.png",
+    "static/media/solarpunk.png": "/static/media/solarpunk.f13face8bdc8cd5e6fe9.png",
+    "static/media/floating-city.png": "/static/media/floating-city.3dcd79b593d46db43012.png",
+    "static/media/proofofvisit.png": "/static/media/proofofvisit.e0b77f721b48b8b27f23.png",
+    "static/media/pydb.png": "/static/media/pydb.f42d10a9a82f776d569e.png",
+    "static/media/logo-2.webp": "/static/media/logo-2.f977d3265a1f199b48c4.webp",
+    "index.html": "/index.html",
+    "main.7515abba.js.map": "/static/js/main.7515abba.js.map",
+    "787.5465e5f7.chunk.js.map": "/static/js/787.5465e5f7.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.7515abba.js"
+  ]
+}

@@ -1,0 +1,145 @@
+import { ethers } from 'ethers';
+import { formatEther } from 'ethers/lib/utils';
+import React, { useEffect, useState } from 'react'
+import { Button, Container } from 'react-bootstrap'
+import styled from 'styled-components';
+
+const StyledContainer = styled(Container)`
+`
+
+const DescriptionDiv = styled.div`
+`
+const StatsDiv = styled.div`
+display: flex;
+justify-content: center;
+flex-direction: column;
+align-items: center;
+`
+
+const DisplayNFTDiv = styled.div`
+display:flex;
+justify-content: center;
+align-items: center;
+margin-top: 1rem;
+`
+
+
+const ProofOfVisit = () => {
+    const provider = new ethers.providers.Web3Provider(window.ethereum)
+    provider.send("eth_requestAccounts", []);
+    const signer = provider.getSigner()
+    const rpcProvider = new ethers.providers.JsonRpcProvider('https://rpc.sepolia.org/');
+    // const signer = provider.getSigner()
+    
+    const [blocknumber, setBlocknumber] = useState<number>()
+    const [balanceOf, setBalanceOf] = useState<number>()
+
+
+    const proofOfVisitAddress = "0xF713637fE578E15Defd53e5c4DCA37d38b205F4d"
+    const proofOfVisitAbi = [
+        "function name() view returns (string)",
+        "function symbol() view returns (string)",
+        "function balanceOf(address) view returns (uint)",
+        "function safeMint(address)",
+        "function totalMinted() view returns (uint)",
+        "event Transfer(address from, address to, uint256 tokenId)"
+    ];
+
+    const ProofOfVisitContract = new ethers.Contract(proofOfVisitAddress, proofOfVisitAbi, provider);
+    const rpcContract = new ethers.Contract(proofOfVisitAddress, proofOfVisitAbi, rpcProvider);
+
+    useEffect(() => {
+        console.log(`listening for Transfer...`)
+        getBlockNumber();
+        getEvents();
+    })
+
+    const getEvents = async () => {
+        try {
+        console.log('waiting');
+        ProofOfVisitContract.on("Transfer", (from, to, tokenId, event) => {
+            console.log("event ran");     
+        });}
+        catch {}
+
+        
+    }
+            
+    const getBlockNumber = async () => {
+        const res = await provider.getBlockNumber()
+        setBlocknumber(res)
+        console.log(res);       
+    }
+
+    const logInfo = async () => {
+    console.log(await signer.getAddress());
+    getBalance();
+    }
+    const getBalance = async () => {
+        const res = await ProofOfVisitContract.balanceOf(await signer.getAddress());
+        console.log(res);
+        
+    }
+
+    const mint =  async () => {
+        const visitWithSigner = ProofOfVisitContract.connect(signer);
+        visitWithSigner.safeMint(await signer.getAddress());
+        console.log(signer);
+    }
+//     const getContractInfo = async () => {
+//         console.log(ProofOfVisitContract.address);
+//         getBlockNumber()
+//         console.log(ProofOfVisitContract._tokenIdCounter);
+        
+//     }
+
+//     const getSigner =async () => {
+        
+//     }
+
+
+// useEffect(() => {    
+//     getBlockNumber();
+//         ProofOfVisitContract.on("Transfer", (from, to, amount, event) => {
+//         console.log(`${ from } sent ${ formatEther(amount) } to ${ to}`);
+//         console.log('mounted');
+        
+//     // The event object contains the verbatim log data, the
+    // EventFragment and functions to fetch the block,
+    // transaction and receipt and event functions
+// });
+// }, [])
+
+
+    return (
+        <StyledContainer>
+            <DescriptionDiv>
+                <hr></hr>
+                <p>So, I'm real happy you found your way here. As a fun experiment I want you to have a token, it will
+                    serve
+                    as a proof that you interacted with my site/contract. Most likely totally useless, but I might use
+                    it
+                    for something in some way in the future.
+                </p>
+                <p>Connect via your standard web3 provider and click the button to claim.</p>
+            </DescriptionDiv>
+            <StatsDiv>
+                {/* <div>Total claimed: </div>
+                <div>Unique holders: /numberHolders/</div>
+                <div>Last token claimed on: /lastClaimedDate/</div>
+                <div>First token claimed on: /firstClaimedDate/</div> */}
+                <Button variant="secondary" className='btn btn-theme mt-2' onClick={mint}>Click to claim your token</Button>
+            </StatsDiv>
+            <StatsDiv>
+                ? Claim NFT
+            </StatsDiv>
+            <DisplayNFTDiv>
+            </DisplayNFTDiv>
+            <div>
+                yo {blocknumber} {balanceOf?.toString()}
+            </div>
+        </StyledContainer>
+    )
+}
+
+export default ProofOfVisit

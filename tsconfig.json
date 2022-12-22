@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "target": "es2020",
+    "module": "commonjs",
+    "jsx": "react",
+    "allowJs": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "strict": true /* Enable all strict type-checking options. */,
+    "outDir": "dist" /* Redirect output structure to the directory. */,
+    "baseUrl": "src" /* Base directory to resolve non-absolute module names. */,
+    "typeRoots": [
+      "./types",
+      "node_modules/@types"
+    ] /* List of folders to include type definitions from. */,
+    "strictNullChecks": true /* Enable strict null checks. */,
+    "allowJs": true /* Allow javascript files to be compiled. */
+  },
+  "exclude": [
+    "dist",
+    "node_modules"
+  ]
+}

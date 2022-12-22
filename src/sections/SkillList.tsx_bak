@@ -1,0 +1,54 @@
+import ContainerVH100 from 'components/ContainerVH100'
+import ContainerVH50 from 'components/ContainerVH50'
+import React from 'react'
+import { Container } from 'react-bootstrap'
+import styled from 'styled-components'
+import { breakpoints } from 'variables/_variables'
+
+const StyledContainer = styled(Container)`
+    `
+
+const StyledSkillList = styled.div`
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+    margin-left: 32px;
+
+    @media(min-width: ${breakpoints.sm}) {flex-direction: row;margin-left: 0;}
+`
+
+const SkillList = () => {
+    return (
+        <ContainerVH50>
+            <StyledContainer>
+                <StyledSkillList>
+                    <ul className='skills-list-langugages'><em>Languages:</em>
+                        <li>Python</li>
+                        <li>Solidity</li>
+                        <li>Javascript/Typescript</li>
+                        <li>CSS/SASS</li>
+                        <li>HTML</li>
+                        <li>Bash</li>
+                        <li>C#</li>
+                    </ul>
+                    <ul className='skills-list-environments'><em>Environments:</em>
+                        <li>Windows</li>
+                        <li>Unix</li>
+                    </ul>
+                    <ul className='skills-list-apps'><em>Applications:</em>
+                        <li>Microsoft Office</li>
+                        <li>Git</li>
+                        <li>Vmware</li>
+                        <li>Virtualbox</li>
+                        <li>QEMU/Libvirt</li>
+                        <li>Docker</li>
+                        <li>React</li>
+                        <li>Hardhat/Truffle</li>
+                    </ul>
+                </StyledSkillList>
+            </StyledContainer >
+        </ContainerVH50>
+    )
+}
+
+export default SkillList

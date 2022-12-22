@@ -1,0 +1,4 @@
+node_modules/
+ipfs-upload-client/
+.env
+src/config/secrets.ts

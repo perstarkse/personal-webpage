@@ -6,11 +6,10 @@ import { WagmiConfig, createClient, configureChains } from 'wagmi'
 import { publicProvider } from 'wagmi/providers/public'
 import { sepolia } from 'wagmi/chains'
 import { infuraProvider } from 'wagmi/providers/infura'
-import { infuraAPI } from 'config/secrets';
 
 const { chains, provider, webSocketProvider } = configureChains(
   [sepolia],
-  [infuraProvider({apiKey: infuraAPI }), publicProvider()],
+  [infuraProvider({apiKey: "sksk"}), publicProvider()],
 )
 
 const client = createClient({

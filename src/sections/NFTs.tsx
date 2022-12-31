@@ -1,18 +1,20 @@
-import ConnectToChain from 'components/ConnectToChain';
-import MintTransaction from 'components/ProofOfVisit/MintTransaction';
-import ProofOfVisitData from 'components/ProofOfVisit/ProofOfVisitData';
+import ProofOfVisit from 'components/ProofOfVisit/ProofOfVisit';
+import SynthwavePunk from 'components/SyntwavePunk/SynthwavePunk';
+import { ConnectKitButton } from 'connectkit';
 import { ethers } from 'ethers';
 import { formatEther } from 'ethers/lib/utils';
 import React, { useEffect, useState } from 'react'
 import { Button, Container } from 'react-bootstrap'
 import styled from 'styled-components';
+import nftNrUno from 'images/nfts/1.png'
+
 
 const StyledContainer = styled(Container)`
 `
 
 const DescriptionDiv = styled.div`
 `
-const StatsDiv = styled.div`
+const CenterDiv = styled.div`
 display: flex;
 justify-content: center;
 flex-direction: column;
@@ -27,7 +29,7 @@ margin-top: 1rem;
 `
 
 
-const ProofOfVisit = () => {
+const NFTs = () => {
 
     return (
         <StyledContainer>
@@ -37,26 +39,21 @@ const ProofOfVisit = () => {
                     serve
                     as a proof that you interacted with my site/contract. Most likely totally useless, but I might use
                     it
-                    for something in some way in the future.
+                    for something in some way in the future. There are 90 unique NFTs to claim for proof of visit holders.
                 </p>
-                <p>Connect via your standard web3 provider and click the button to claim.</p>
+                
+                <p className='text-center'>Connect via button below and follow instructions to claim.</p>
             </DescriptionDiv>
-            <ConnectToChain />
-
-            <ProofOfVisitData />
-            <StatsDiv>
-                <MintTransaction />
-            </StatsDiv>
-            <StatsDiv>
-                ? Claim NFT
-            </StatsDiv>
+            <CenterDiv>
+                <img src={nftNrUno} alt="numeroUnoNFT" />
+                <ConnectKitButton />
+                <ProofOfVisit />
+                <SynthwavePunk />
+            </CenterDiv>
             <DisplayNFTDiv>
             </DisplayNFTDiv>
-            <div>
-                {/* yo {blocknumber} {balanceOf?.toString()} */}
-            </div>
         </StyledContainer>
     )
 }
 
-export default ProofOfVisit
+export default NFTs

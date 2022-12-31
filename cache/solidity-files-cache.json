@@ -2,8 +2,8 @@
   "_format": "hh-sol-cache-2",
   "files": {
     "/home/p/kodning/personal-webpage/v0.3-old/contracts/ProofOfVisit.sol": {
-      "lastModificationDate": 1671624335192,
-      "contentHash": "5c873d943828d64399788b7241942343",
+      "lastModificationDate": 1671710895067,
+      "contentHash": "d03294f251d14cf7835e30f5b290873e",
       "sourceName": "contracts/ProofOfVisit.sol",
       "solcConfig": {
         "version": "0.8.17",
@@ -442,8 +442,8 @@
       ]
     },
     "/home/p/kodning/personal-webpage/v0.3-old/contracts/SynthwavePunk.sol": {
-      "lastModificationDate": 1671624325022,
-      "contentHash": "e614a2cc9fa8b8ba0f516ddf679f545c",
+      "lastModificationDate": 1671710926247,
+      "contentHash": "30c7004f0887da3768551e74da87240b",
       "sourceName": "contracts/SynthwavePunk.sol",
       "solcConfig": {
         "version": "0.8.17",

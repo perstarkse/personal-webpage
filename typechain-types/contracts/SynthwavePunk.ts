@@ -40,7 +40,7 @@ export interface SynthwavePunkInterface extends utils.Interface {
     "ownerOf(uint256)": FunctionFragment;
     "proofOfVisitAddress()": FunctionFragment;
     "renounceOwnership()": FunctionFragment;
-    "safeMint(address)": FunctionFragment;
+    "safeMint()": FunctionFragment;
     "safeTransferFrom(address,address,uint256)": FunctionFragment;
     "safeTransferFrom(address,address,uint256,bytes)": FunctionFragment;
     "setApprovalForAll(address,bool)": FunctionFragment;
@@ -117,10 +117,7 @@ export interface SynthwavePunkInterface extends utils.Interface {
     functionFragment: "renounceOwnership",
     values?: undefined
   ): string;
-  encodeFunctionData(
-    functionFragment: "safeMint",
-    values: [PromiseOrValue<string>]
-  ): string;
+  encodeFunctionData(functionFragment: "safeMint", values?: undefined): string;
   encodeFunctionData(
     functionFragment: "safeTransferFrom(address,address,uint256)",
     values: [
@@ -367,7 +364,6 @@ export interface SynthwavePunk extends BaseContract {
     ): Promise<ContractTransaction>;
 
     safeMint(
-      to: PromiseOrValue<string>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<ContractTransaction>;
 
@@ -466,7 +462,6 @@ export interface SynthwavePunk extends BaseContract {
   ): Promise<ContractTransaction>;
 
   safeMint(
-    to: PromiseOrValue<string>,
     overrides?: Overrides & { from?: PromiseOrValue<string> }
   ): Promise<ContractTransaction>;
 
@@ -562,10 +557,7 @@ export interface SynthwavePunk extends BaseContract {
 
     renounceOwnership(overrides?: CallOverrides): Promise<void>;
 
-    safeMint(
-      to: PromiseOrValue<string>,
-      overrides?: CallOverrides
-    ): Promise<void>;
+    safeMint(overrides?: CallOverrides): Promise<void>;
 
     "safeTransferFrom(address,address,uint256)"(
       from: PromiseOrValue<string>,
@@ -707,7 +699,6 @@ export interface SynthwavePunk extends BaseContract {
     ): Promise<BigNumber>;
 
     safeMint(
-      to: PromiseOrValue<string>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<BigNumber>;
 
@@ -809,7 +800,6 @@ export interface SynthwavePunk extends BaseContract {
     ): Promise<PopulatedTransaction>;
 
     safeMint(
-      to: PromiseOrValue<string>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<PopulatedTransaction>;
 

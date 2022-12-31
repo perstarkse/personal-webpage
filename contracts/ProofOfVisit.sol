@@ -23,10 +23,10 @@ contract ProofOfVisit is ERC721, Ownable {
         _;
     }
 
-    function safeMint(address to) public hasAlreadyClaimed {
+    function safeMint() public hasAlreadyClaimed {
         uint256 tokenId = _tokenIdCounter.current();
         hasClaimed[msg.sender] = true;
         _tokenIdCounter.increment();
-        _safeMint(to, tokenId);
+        _safeMint(msg.sender, tokenId);
     }
 }

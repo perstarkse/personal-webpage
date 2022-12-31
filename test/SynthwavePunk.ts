@@ -27,12 +27,12 @@ describe("SynthwavePunk", function () {
     describe("deployment", function () {
         it("should be deployed", async function () {
             const { synthwavePunk } = await loadFixture(deployed);
-            expect(synthwavePunk.address).is.not.null;
+            await expect(synthwavePunk.address).is.not.null;
         });
 
         it("should transfer ownership to dev account", async function () {
             const { synthwavePunk, SecondAccount } = await loadFixture(deployed);
-            expect(await synthwavePunk.transferOwnership(SecondAccount.address)).not.to.be.reverted;
+            await expect(await synthwavePunk.transferOwnership(SecondAccount.address)).not.to.be.reverted;
         })
 
         it("should be dev account that is owner", async () => {
@@ -42,7 +42,7 @@ describe("SynthwavePunk", function () {
         });
         it("maxToken value should be set from deployment", async function () {
             const { synthwavePunk, maxTokens } = await loadFixture(deployed);
-            expect(await synthwavePunk.maxTokens()).to.be.equal(maxTokens);
+            expect(await synthwavePunk.totalSupply()).to.be.equal(maxTokens);
         });
 
     });
@@ -50,35 +50,35 @@ describe("SynthwavePunk", function () {
     describe("integration with proofofvisit", function () {
         it("proofOfVisit should be deployed", async function () {
             const { proofOfVisit } = await loadFixture(deployed);
-            expect(proofOfVisit.address).is.not.null;
+            await expect(proofOfVisit.address).is.not.null;
         });
         it("proofofvisit address should be set from deployment", async function () {
             const { proofOfVisit, synthwavePunk } = await loadFixture(deployed);
             expect(await synthwavePunk.proofOfVisitAddress()).to.be.equal(proofOfVisit.address);
         });
         it("should be able to mint both tokens", async function () {
-            const { proofOfVisit, synthwavePunk, Deployer } = await loadFixture(deployed);
-            await proofOfVisit.safeMint(Deployer.address);
-            await expect(synthwavePunk.safeMint(Deployer.address)).not.to.be.reverted;
+            const { proofOfVisit, synthwavePunk } = await loadFixture(deployed);
+            await proofOfVisit.safeMint();
+            await expect(synthwavePunk.safeMint()).not.to.be.reverted;
         });
         it("should not be able to mint two punks", async function () {
-            const { proofOfVisit, synthwavePunk, Deployer } = await loadFixture(deployed);
-            await proofOfVisit.safeMint(Deployer.address);
-            await synthwavePunk.safeMint(Deployer.address);
-            await expect(synthwavePunk.safeMint(Deployer.address)).to.be.revertedWith('has already claimed');
+            const { proofOfVisit, synthwavePunk } = await loadFixture(deployed);
+            await proofOfVisit.safeMint();
+            await synthwavePunk.safeMint();
+            await expect(synthwavePunk.safeMint()).to.be.revertedWith('has already claimed');
         });
         it("should not be able to mint twice per account", async function () {
-            const { proofOfVisit, synthwavePunk, Deployer } = await loadFixture(deployed);
-            await proofOfVisit.safeMint(Deployer.address);
-            await synthwavePunk.safeMint(Deployer.address);
-            await expect(synthwavePunk.safeMint(Deployer.address)).to.be.revertedWith('has already claimed');
+            const { proofOfVisit, synthwavePunk} = await loadFixture(deployed);
+            await proofOfVisit.safeMint();
+            await synthwavePunk.safeMint();
+            await expect(synthwavePunk.safeMint()).to.be.revertedWith('has already claimed');
         });
         it("should not be able to mint more tokens than maxTokens", async function () {
-            const { proofOfVisit, synthwavePunk, Deployer, SecondAccount } = await loadFixture(deployed);
-            await proofOfVisit.safeMint(Deployer.address);
-            await synthwavePunk.safeMint(Deployer.address);
-            await proofOfVisit.connect(SecondAccount).safeMint(SecondAccount.address);
-            await expect(synthwavePunk.connect(SecondAccount).safeMint(SecondAccount.address)).to.be.revertedWith('out of mints');
+            const { proofOfVisit, synthwavePunk, SecondAccount } = await loadFixture(deployed);
+            await proofOfVisit.safeMint();
+            await synthwavePunk.safeMint();
+            await proofOfVisit.connect(SecondAccount).safeMint();
+            await expect(synthwavePunk.connect(SecondAccount).safeMint()).to.be.revertedWith('out of mints');
         });
     })
 })

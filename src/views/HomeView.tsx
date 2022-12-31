@@ -4,13 +4,14 @@ import Skills from '../sections/Skills'
 import Banner from '../sections/Banner';
 import Introduction from '../sections/Introduction';
 import ImageViewer from '../sections/ImageViewer';
-import ProofOfVisit from '../sections/ProofOfVisit';
+import ProofOfVisit from '../sections/NFTs';
 import ExampleProjects from '../sections/ExampleProjects';
 import Footer from 'sections/Footer';
 import styled from 'styled-components';
 import AppSkills from 'sections/Skills/Applications';
 import LangSkills from 'sections/Skills/Languages';
 import PsychSkills from 'sections/Skills/Psychology';
+import NFTs from '../sections/NFTs';
 
 const HomeViews = styled.div`
     position: relative;
@@ -48,8 +49,8 @@ const HomeView = (): JSX.Element => {
             <LangSkills />
             <AppSkills />
             <PsychSkills /> */}
-            <ProofOfVisit />
-            <ExampleProjects />
+            <NFTs />
+            {/* <ExampleProjects /> */}
             <Footer />
         </HomeViews >
     );

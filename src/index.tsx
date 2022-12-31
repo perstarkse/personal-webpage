@@ -2,7 +2,6 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom/client';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-// import { EthersAppContext } from 'eth-hooks/context';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

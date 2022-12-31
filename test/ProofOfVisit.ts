@@ -22,12 +22,12 @@ describe("ProofOfVisit", function () {
     describe("deployment", function () {
         it("should be deployed", async function () {
             const { proofOfVisit } = await loadFixture(deployed);
-            expect(await proofOfVisit.address).is.not.null;
+            await expect(await proofOfVisit.address).is.not.null;
         });
 
         it("should transfer ownership to dev account", async function () {
             const { proofOfVisit, SecondAccount } = await loadFixture(deployed);
-            expect(await proofOfVisit.transferOwnership(SecondAccount.address)).not.to.be.reverted;
+            await expect(await proofOfVisit.transferOwnership(SecondAccount.address)).not.to.be.reverted;
         })
 
         it("should be dev account that is owner", async () => {
@@ -39,18 +39,18 @@ describe("ProofOfVisit", function () {
     describe("minting", () => {
         it("should be able to mint an nft to deployer", async () => {
             const { proofOfVisit, Deployer } = await loadFixture(deployed);
-            expect(await proofOfVisit.safeMint(Deployer.address)).not.to.be.reverted;
+            await expect(await proofOfVisit.safeMint()).not.to.be.reverted;
         });
         it("should have a balance after minting", async () => {
             const { proofOfVisit, Deployer } = await loadFixture(deployed);
-            await proofOfVisit.safeMint(Deployer.address);
+            await proofOfVisit.safeMint();
             expect(await proofOfVisit.balanceOf(Deployer.address)).to.equal("1");
         });
 
         it("should be able to transfer an nft to another account", async () => {
             const { proofOfVisit, Deployer, SecondAccount } = await loadFixture(deployed);
-            await proofOfVisit.safeMint(Deployer.address);
-            expect(await proofOfVisit.transferFrom(Deployer.address, SecondAccount.address, "0")).not.to.be.reverted;
+            await proofOfVisit.safeMint();
+            await expect(await proofOfVisit.transferFrom(Deployer.address, SecondAccount.address, "0")).not.to.be.reverted;
         });
     })
     describe("error handling", () => {
@@ -60,7 +60,7 @@ describe("ProofOfVisit", function () {
         });
         it("should not be able to transfer a token it doesnt own", async () => {
             const { proofOfVisit, Deployer, SecondAccount } = await loadFixture(deployed);
-            await proofOfVisit.safeMint(Deployer.address);
+            await proofOfVisit.safeMint();
             await expect(proofOfVisit.transferFrom(SecondAccount.address, Deployer.address, "0")).to.be.revertedWith('ERC721: transfer from incorrect owner');
         });
     })
@@ -68,16 +68,16 @@ describe("ProofOfVisit", function () {
     describe("renouncing ownership", () => {
         it("should be able to mint an nft to deployer", async () => {
             const { proofOfVisit, Deployer } = await loadFixture(deployed);
-            expect(await proofOfVisit.safeMint(Deployer.address)).not.to.be.reverted;
+            await expect(await proofOfVisit.safeMint()).not.to.be.reverted;
         });
         it("should be able to transfer an nft to second account", async () => {
             const { proofOfVisit, Deployer, SecondAccount } = await loadFixture(deployed);
-            await proofOfVisit.safeMint(Deployer.address);
-            expect(await proofOfVisit.transferFrom(Deployer.address, SecondAccount.address, "0")).not.to.be.reverted;
+            await proofOfVisit.safeMint();
+            await expect(await proofOfVisit.transferFrom(Deployer.address, SecondAccount.address, "0")).not.to.be.reverted;
         });
         it("should be able to renounce ownership", async () => {
             const { proofOfVisit } = await loadFixture(deployed);
-            expect(await proofOfVisit.renounceOwnership()).not.to.be.reverted;
+            await expect(await proofOfVisit.renounceOwnership()).not.to.be.reverted;
         });
         it("deployer should no longer be owner", async () => {
             const { proofOfVisit, Deployer } = await loadFixture(deployed);

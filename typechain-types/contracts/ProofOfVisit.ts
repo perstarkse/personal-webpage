@@ -38,7 +38,7 @@ export interface ProofOfVisitInterface extends utils.Interface {
     "owner()": FunctionFragment;
     "ownerOf(uint256)": FunctionFragment;
     "renounceOwnership()": FunctionFragment;
-    "safeMint(address)": FunctionFragment;
+    "safeMint()": FunctionFragment;
     "safeTransferFrom(address,address,uint256)": FunctionFragment;
     "safeTransferFrom(address,address,uint256,bytes)": FunctionFragment;
     "setApprovalForAll(address,bool)": FunctionFragment;
@@ -103,10 +103,7 @@ export interface ProofOfVisitInterface extends utils.Interface {
     functionFragment: "renounceOwnership",
     values?: undefined
   ): string;
-  encodeFunctionData(
-    functionFragment: "safeMint",
-    values: [PromiseOrValue<string>]
-  ): string;
+  encodeFunctionData(functionFragment: "safeMint", values?: undefined): string;
   encodeFunctionData(
     functionFragment: "safeTransferFrom(address,address,uint256)",
     values: [
@@ -333,7 +330,6 @@ export interface ProofOfVisit extends BaseContract {
     ): Promise<ContractTransaction>;
 
     safeMint(
-      to: PromiseOrValue<string>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<ContractTransaction>;
 
@@ -426,7 +422,6 @@ export interface ProofOfVisit extends BaseContract {
   ): Promise<ContractTransaction>;
 
   safeMint(
-    to: PromiseOrValue<string>,
     overrides?: Overrides & { from?: PromiseOrValue<string> }
   ): Promise<ContractTransaction>;
 
@@ -516,10 +511,7 @@ export interface ProofOfVisit extends BaseContract {
 
     renounceOwnership(overrides?: CallOverrides): Promise<void>;
 
-    safeMint(
-      to: PromiseOrValue<string>,
-      overrides?: CallOverrides
-    ): Promise<void>;
+    safeMint(overrides?: CallOverrides): Promise<void>;
 
     "safeTransferFrom(address,address,uint256)"(
       from: PromiseOrValue<string>,
@@ -655,7 +647,6 @@ export interface ProofOfVisit extends BaseContract {
     ): Promise<BigNumber>;
 
     safeMint(
-      to: PromiseOrValue<string>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<BigNumber>;
 
@@ -749,7 +740,6 @@ export interface ProofOfVisit extends BaseContract {
     ): Promise<PopulatedTransaction>;
 
     safeMint(
-      to: PromiseOrValue<string>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<PopulatedTransaction>;
 

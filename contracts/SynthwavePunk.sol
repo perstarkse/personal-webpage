@@ -54,12 +54,15 @@ contract SynthwavePunk is ERC721, Ownable {
         _;
     }
 
-    function safeMint(
-        address to
-    ) public hasAlreadyClaimed outOfMints hasProofOfVisitToken {
+    function safeMint()
+        public
+        hasAlreadyClaimed
+        outOfMints
+        hasProofOfVisitToken
+    {
         uint256 tokenId = _tokenIdCounter.current();
         hasClaimed[msg.sender] = true;
         _tokenIdCounter.increment();
-        _safeMint(to, tokenId);
+        _safeMint(msg.sender, tokenId);
     }
 }

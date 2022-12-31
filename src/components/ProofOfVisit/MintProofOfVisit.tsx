@@ -1,13 +1,12 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Button } from 'react-bootstrap';
-import { useAccount } from "wagmi";
 import { usePrepareContractWrite, useContractWrite, useWaitForTransaction } from 'wagmi'
 
+interface IMintFunction{
+setFunction: (arg0: boolean) => void;
+}
 
-const MintProofOfVisit = () => {
-
-  const { address, isConnecting, isDisconnected } = useAccount();
- 
+const MintProofOfVisit:React.FC<IMintFunction>= (props) => {
     const { config } = usePrepareContractWrite({
     address: '0xe38630CD5A8eAEA326431C956Fab2dF0d288340c',
     abi: [
@@ -27,20 +26,21 @@ const MintProofOfVisit = () => {
     hash: data?.hash,
   })
 
-  if (isConnecting) return <></>;
-  if (isDisconnected) return <></>;
+  const changeParentState = () => {
+  props.setFunction(true);}
 
   return (
     <div className='d-grid'>
-      <p>Now that you are connected you can click the button below to claim.</p>
+      <p className='mt-2 text-center'>Now that you are connected you can click the button below to claim.</p>
     <Button disabled={!write} variant="secondary" className='btn btn-theme mt-2' onClick={() => write?.()}>
       { isLoading ? ('Minting...'): ('Click to claim your token') } 
       </Button> 
       {isSuccess && (
         <div className='text-center'>
           Successfully minted your proof of visit NFT!
-          <div>
+          <div className="d-grid">
             <a href={`https://sepolia.etherscan.io/tx/${data?.hash}`}>Etherscan</a>
+            <Button variant="secondary" className='btn btn-theme mt-2' onClick={changeParentState}>Click here to mint a punk </Button>
           </div>
         </div>
       )}

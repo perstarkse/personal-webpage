@@ -1,51 +1,59 @@
 import { SynthwavePunkAddress } from 'config/ethConfig';
 import { BigNumber, ethers } from 'ethers';
-import { string } from 'hardhat/internal/core/params/argumentTypes';
 import React, { useEffect, useState } from 'react'
-import { erc721ABI, useAccount, useContractReads } from 'wagmi'
+import { erc721ABI, useAccount, useContract, useContractEvent, useProvider,  } from 'wagmi'
+import ViewImage from './ViewImage';
 
-
-const SynthwaveTokenContract = {
-address: SynthwavePunkAddress,
-abi: erc721ABI,
-  }
-
-  interface IMetadata {
-  name: string,
-  description: string,
-  image: string
+interface IEvent {
+  from: string,
+  to: string,
+  tokenId: BigNumber | null ,
 }
 const ViewSynthwavePunkNFT = () => {
-    const [userNFT, setUserNFT] = useState<IMetadata>() 
-    const [imageURL, setImageURL] = useState("")
-    const { address, isConnecting, isDisconnected } = useAccount();
-    const { data, isError, isLoading } = useContractReads({
-    contracts: [
-      {
-        ...SynthwaveTokenContract,
-        functionName: 'tokenURI',
-        args: [BigNumber.from(0)]
-      },
-    ],
+  const [newEvent, setNewEvent] = useState<IEvent>()
+  const [previousLogs, setPreviousLogs] = useState<ethers.Event[]>()
+  const [latestTransactedTokenID, setLatestTransactedTokenID] = useState()
+
+  const { address  } = useAccount();
+  const provider = useProvider()
+    
+  const SynthwavePunkContract = useContract({
+      address: SynthwavePunkAddress,
+      abi: erc721ABI,
+      signerOrProvider: provider});
+
+  useContractEvent({
+    address: SynthwavePunkAddress,
+    abi: erc721ABI,
+    eventName: 'Transfer',
+    listener: (from, to, tokenId) => {
+      setNewEvent({ from, to, tokenId })
+    }
   })
 
-  const getUserNFT =  async () => {
-    const res = await fetch(data![0])
-    const resJson:IMetadata = await res.json();
-    setUserNFT(resJson)
-  }
+  const getPreviousLogs = async () => {
+      const filter = SynthwavePunkContract!.filters.Transfer(null, address!, null)
+      const logs = await SynthwavePunkContract!.queryFilter(filter)
+      setPreviousLogs(logs)
+    }
 
-  useEffect (() => {getUserNFT()},[])
+  useEffect (() => {
+    if (latestTransactedTokenID) {
+    // console.log("has tokenid")
+    }
+    else if (address) {
+      if (SynthwavePunkContract) {
+        getPreviousLogs();
+        if (previousLogs)
+          {setLatestTransactedTokenID(previousLogs[0].args![2]._hex);
+          // console.log(previousLogs![0].args![2]._hex);
+          }
+      }}
+  },[address, previousLogs])
 
-  
-  if (isConnecting) return <></>
-  if (isDisconnected) return <></>
+// IMAGEDISPLAY COMPONENT PASS THROUGH TRANSACTION ,, USECONTRACT READS IN NEW COMPONENT,, USE "NO PREVIOUS TRANSACTIONS" AS INITIAL SORTING????
+if (latestTransactedTokenID) {return (  <ViewImage previousEvent={latestTransactedTokenID} /> )} 
 
-  return (
-    <div>
-      <p className='text-center mt-3'>Here is your punk!</p>
-      <img src={userNFT?.image} alt={userNFT?.description} /></div>
-  )
+else return <></>
 }
-
 export default ViewSynthwavePunkNFT

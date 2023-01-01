@@ -1,12 +1,10 @@
 import { SynthwavePunkAddress } from 'config/ethConfig';
-import React, { useState } from 'react'
+import React from 'react'
 import { Button } from 'react-bootstrap';
 import { usePrepareContractWrite, useContractWrite, useWaitForTransaction } from 'wagmi'
-
 interface IMintFunction{
 setFunction: (arg0: boolean) => void;
 }
-
 
 const MintSynthwavePunk:React.FC<IMintFunction> = (props) => {
     const { config } = usePrepareContractWrite({
@@ -25,12 +23,11 @@ const MintSynthwavePunk:React.FC<IMintFunction> = (props) => {
     const { data, write } = useContractWrite(config)
 
     const { isLoading, isSuccess } = useWaitForTransaction({
-    hash: data?.hash,
+    hash: data?.hash, 
   })
 
     const changeParentState = () => {
     props.setFunction(true);}
-
 
   return (
     <div className='d-grid'>

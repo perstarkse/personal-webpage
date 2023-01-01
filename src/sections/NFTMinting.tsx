@@ -36,13 +36,15 @@ const NFTMinting = () => {
   })
 
   useEffect(() => {
-    if (data)    
-        if (Number(data?.[0]._hex) === 1) {
-        setMintedSP(true)
+    if (address) {
+        if (data)    
+            if (Number(data?.[0]._hex) === 1) {
+            setMintedSP(true)
+            }
+            if (Number(data?.[1]._hex) === 1) {
+            setMintedPOV(true)
         }
-        if (Number(data?.[1]._hex) === 1) {
-        setMintedPOV(true)
-     }
+    }
     },[data, address])
 
   if (isConnecting) return <></>

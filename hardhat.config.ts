@@ -3,7 +3,7 @@ import "@nomicfoundation/hardhat-toolbox";
 require('dotenv').config();
 
 
-const { INFURAAPI, PRIVATEKEY, ETHERSCANKEY } = process.env;
+const { INFURAAPI, PRIVATEKEY, ETHERSCANKEY, POLYGONSCANKEY } = process.env;
 
 const config: HardhatUserConfig = {
   solidity: "0.8.17",
@@ -18,11 +18,17 @@ const config: HardhatUserConfig = {
       url: `https://sepolia.infura.io/v3/${INFURAAPI}`,
       accounts: [`0x${PRIVATEKEY}`]
     },
+    polygon: {
+      url: `https://polygon-mainnet.infura.io/v3/${INFURAAPI}`,
+      gasPrice: 1000000000,
+      accounts: [`0x${PRIVATEKEY}`],
+    }
   },
   etherscan: {
     apiKey: {
       goerli: `${ETHERSCANKEY}`,
       sepolia: `${ETHERSCANKEY}`,
+      polygon: `${POLYGONSCANKEY}`
     }
   }
 };

@@ -1,8 +1,5 @@
 import { ConnectKitButton } from 'connectkit';
-import { ethers } from 'ethers';
-import { formatEther } from 'ethers/lib/utils';
-import React, { useEffect, useState } from 'react'
-import { Button, Container } from 'react-bootstrap'
+import React from 'react'
 import styled from 'styled-components';
 import nftNrUno from 'images/nfts/1.png'
 import NFTMinting from './NFTMinting';
@@ -27,9 +24,10 @@ const NFTs = () => {
                     serve
                     as a proof that you interacted with my site/contract. Most likely totally useless, but I might use
                     it
-                    for something in some way in the future. There are 90 unique NFTs to claim for proof of visit holders.
+                    for something in some way in the future. There are 90 unique NFTs to claim for proof of visit holders. All data and images is hosted on ipfs.
                 </p>
-                <p className='text-center'>Connect via button below and follow instructions to claim.</p>
+                <p className='text-center'>Connect via button below to sepolia network and follow instructions to claim.
+                It will cost a small bit of gas to claim, if you contact me I'll gladly provide enough to claim.</p>
             </DescriptionDiv>
             <CenterDiv>
                 <img src={nftNrUno} alt="numeroUnoNFT" />

@@ -3,11 +3,11 @@ import { Container } from 'react-bootstrap'
 import styled from 'styled-components'
 
 const ContainerVh50 = styled(Container)`
-    max-height: 120vh;
+    max-height: 150vh;
     display: grid;
     place-content:center;
     overflow: hidden;
-    min-height: 50vh;
+    min-height: 30vh;
     scroll-snap-align: center;
 `
 

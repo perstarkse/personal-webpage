@@ -41,16 +41,16 @@ const HomeView = (): JSX.Element => {
     return (
         <HomeViews>
             {/* <div className='artwork'></div> */}
-            {/* <NavBar />
+            <NavBar />
             <Banner />
             <Introduction />
             <ImageViewer />
             <Skills />
             <LangSkills />
             <AppSkills />
-            <PsychSkills /> */}
+            <PsychSkills />
             <NFTs />
-            {/* <ExampleProjects /> */}
+            <ExampleProjects />
             <Footer />
         </HomeViews >
     );

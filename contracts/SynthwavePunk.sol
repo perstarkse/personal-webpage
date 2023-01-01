@@ -34,7 +34,7 @@ contract SynthwavePunk is ERC721, Ownable {
 
     function _baseURI() internal pure override returns (string memory) {
         return
-            "https://ipfs.io/ipfs/QmZY4Fnkdgv9fGUz5kGYDPBhYV4TJwqVSY9zfULcE51eN1/";
+            "https://synthwavepunk.infura-ipfs.io/ipfs/QmXURKxiHi9XUHZUvtD1gBZce2eQUTpmCJ9awnFUozjvt5/";
     }
 
     modifier hasProofOfVisitToken() {

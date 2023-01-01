@@ -1,3 +1,4 @@
+import { SynthwavePunkAddress } from 'config/ethConfig';
 import React, { useState } from 'react'
 import { Button } from 'react-bootstrap';
 import { usePrepareContractWrite, useContractWrite, useWaitForTransaction } from 'wagmi'
@@ -9,7 +10,7 @@ setFunction: (arg0: boolean) => void;
 
 const MintSynthwavePunk:React.FC<IMintFunction> = (props) => {
     const { config } = usePrepareContractWrite({
-    address: '0xB724e91D9Cc8E121972313c7f9259997b4365802',
+    address: SynthwavePunkAddress,
     abi: [
       {
         name: 'safeMint',

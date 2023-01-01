@@ -1,31 +1,50 @@
+import { SynthwavePunkAddress } from 'config/ethConfig';
 import { BigNumber, ethers } from 'ethers';
-import React from 'react'
+import { string } from 'hardhat/internal/core/params/argumentTypes';
+import React, { useEffect, useState } from 'react'
 import { erc721ABI, useAccount, useContractReads } from 'wagmi'
 
 
 const SynthwaveTokenContract = {
-address: '0xB724e91D9Cc8E121972313c7f9259997b4365802',
+address: SynthwavePunkAddress,
 abi: erc721ABI,
   }
 
+  interface IMetadata {
+  name: string,
+  description: string,
+  image: string
+}
 const ViewSynthwavePunkNFT = () => {
+    const [userNFT, setUserNFT] = useState<IMetadata>() 
+    const [imageURL, setImageURL] = useState("")
     const { address, isConnecting, isDisconnected } = useAccount();
     const { data, isError, isLoading } = useContractReads({
     contracts: [
       {
         ...SynthwaveTokenContract,
         functionName: 'tokenURI',
-        args: [BigNumber.from(1)]
+        args: [BigNumber.from(0)]
       },
     ],
   })
-  console.log(data);
+
+  const getUserNFT =  async () => {
+    const res = await fetch(data![0])
+    const resJson:IMetadata = await res.json();
+    setUserNFT(resJson)
+  }
+
+  useEffect (() => {getUserNFT()},[])
+
   
   if (isConnecting) return <></>
   if (isDisconnected) return <></>
 
   return (
-    <div><img src="https://ipfs.infura.io/ipfs/QmeqKgVqbSCihprysnZbqXBK1WKvKLpSXAq62x6rkMcDqG/0.png" alt="numeroUno" /></div>
+    <div>
+      <p className='text-center mt-3'>Here is your punk!</p>
+      <img src={userNFT?.image} alt={userNFT?.description} /></div>
   )
 }
 

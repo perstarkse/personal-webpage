@@ -1,3 +1,4 @@
+import { ProofOfVisitAddress } from 'config/ethConfig';
 import React from 'react'
 import { Button } from 'react-bootstrap';
 import { usePrepareContractWrite, useContractWrite, useWaitForTransaction } from 'wagmi'
@@ -8,7 +9,7 @@ setFunction: (arg0: boolean) => void;
 
 const MintProofOfVisit:React.FC<IMintFunction>= (props) => {
     const { config } = usePrepareContractWrite({
-    address: '0xe38630CD5A8eAEA326431C956Fab2dF0d288340c',
+    address: ProofOfVisitAddress,
     abi: [
       {
         name: 'safeMint',

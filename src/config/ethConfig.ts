@@ -1,5 +1,2 @@
-import { StaticJsonRpcProvider } from '@ethersproject/providers';
-
-
-export const mainnetScaffoldEthProvider = new StaticJsonRpcProvider('https://rpc.scaffoldeth.io:48544');
-export const sepoliaEthProvider = new StaticJsonRpcProvider('https://rpc.sepolia.org/')
+export const ProofOfVisitAddress = "0xAff8e30C08AE17e063521E87Ddc05498108EC2bc"
+export const SynthwavePunkAddress = "0x4ff7d8b0Ff4FB22324837312A3e2fcc70108c359"

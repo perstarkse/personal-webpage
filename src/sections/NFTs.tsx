@@ -6,12 +6,22 @@ import NFTMinting from './NFTMinting';
 import ContainerVH50 from 'components/ContainerVH50';
 
 const DescriptionDiv = styled.div`
+
 `
 const CenterDiv = styled.div`
 display: flex;
 justify-content: center;
 flex-direction: column;
 align-items: center;
+max-width: 100vw;
+`
+
+const NFTImage = styled.img`
+display: block;
+margin-left: auto;
+margin-right: auto;
+width: 90vw;
+max-width: 512px;
 `
 
 const NFTs = () => {
@@ -30,7 +40,7 @@ const NFTs = () => {
                 It will cost a small bit of gas to claim, if you contact me I'll gladly provide enough to claim.</p>
             </DescriptionDiv>
             <CenterDiv>
-                <img src={nftNrUno} alt="numeroUnoNFT" />
+                <NFTImage src={nftNrUno} alt="numeroUnoNFT" />
                 <p><em>SynthwavePunk #0</em></p>
             </CenterDiv>
             <CenterDiv>

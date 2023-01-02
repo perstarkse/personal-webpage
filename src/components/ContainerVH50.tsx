@@ -7,7 +7,7 @@ const ContainerVh50 = styled(Container)`
     display: grid;
     place-content:center;
     overflow: hidden;
-    min-height: 30vh;
+    min-height: 15vh;
     scroll-snap-align: center;
 `
 

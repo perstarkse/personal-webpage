@@ -1,9 +1,5 @@
-Personal webpage. Included is a NFT collection for visitors.
+Personal webpage. Included is a NFT collection for visitors, generated with Stable Diffusion.
 
-Built with react, css in jsx with styled components, react-bootstrap, hardhat and chai for dapp deployment and testing, wagmi hooks for web3 functionality.
+Built with React, CSS in JSX with Styled Components, React-Bootstrap, Hardhat and Chai for dapp deployment and testing, wagmi hooks for interacting with the smart contracts.
 
-In this project you will find the smart contract source code in the /contracts folder. NFT images and metadata in /nft. Solidity tests in /test folder.
-
-Hardhat commands
-
-npx hardhat help npx hardhat test REPORT_GAS=true npx hardhat test npx hardhat node npx hardhat run scripts/deploy.ts
+You will find the smart contract code in the /contracts folder. NFT images and metadata in /nft as well as bash script for generating metadata. Solidity tests in /test folder. Deploy script in deploy folder.

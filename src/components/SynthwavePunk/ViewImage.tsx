@@ -1,6 +1,7 @@
 import { SynthwavePunkAddress } from 'config/ethConfig'
 import { BigNumber } from 'ethers'
 import React, { useEffect, useState } from 'react'
+import styled from 'styled-components'
 import { erc721ABI, useContractReads } from 'wagmi'
 
   interface IMetadata {
@@ -12,6 +13,14 @@ const SynthwaveTokenContract = {
   address: SynthwavePunkAddress,
   abi: erc721ABI,
   }
+
+  const NFTImage = styled.img`
+display: block;
+margin-left: auto;
+margin-right: auto;
+width: 90vw;
+max-width: 512px;
+`
 
 const ViewImage = (tokenId: any) => {
     const [userNFT, setUserNFT] = useState<IMetadata>() 
@@ -42,7 +51,7 @@ const ViewImage = (tokenId: any) => {
   return (
     <>
         <p className='text-center mt-3'>Here is your punk! It is number {BigNumber.from(tokenId.previousEvent).toNumber()}/90</p>
-        <img src={userNFT?.image} alt={userNFT?.description} />
+        <NFTImage src={userNFT?.image} alt={userNFT?.description} />
       </>
 
   )

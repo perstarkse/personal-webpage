@@ -2,8 +2,9 @@ import { ConnectKitButton } from 'connectkit';
 import React from 'react'
 import styled from 'styled-components';
 import nftNrUno from 'images/nfts/1.png'
-import NFTMinting from './NFTMinting';
+import NFTMinting from '../components/NFTMinting';
 import ContainerVH50 from 'components/ContainerVH50';
+import NFTEntryPoint from '../components/NFTEntryPoint';
 
 const DescriptionDiv = styled.div`
 
@@ -36,7 +37,7 @@ const NFTs = () => {
                     it
                     for something in some way in the future. There are 90 unique NFTs to claim for proof of visit holders. All data and images is hosted on ipfs.
                 </p>
-                <p className='text-center'>Connect via button below to sepolia network and follow instructions to claim.
+                <p className='text-center'>Connect via button below to polygon network and follow instructions to claim.
                 It will cost a small bit of gas to claim, if you contact me I'll gladly provide enough to claim.</p>
             </DescriptionDiv>
             <CenterDiv>
@@ -45,7 +46,7 @@ const NFTs = () => {
             </CenterDiv>
             <CenterDiv>
                 <ConnectKitButton />
-                <NFTMinting />
+                <NFTEntryPoint />
             </CenterDiv>
         </ContainerVH50>
     )

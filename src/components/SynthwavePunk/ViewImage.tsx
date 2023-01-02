@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { erc721ABI, useContractReads } from 'wagmi'
 
-  interface IMetadata {
+interface IMetadata {
   name: string,
   description: string,
   image: string
@@ -14,12 +14,12 @@ const SynthwaveTokenContract = {
   abi: erc721ABI,
   }
 
-  const NFTImage = styled.img`
-display: block;
-margin-left: auto;
-margin-right: auto;
-width: 90vw;
-max-width: 512px;
+const NFTImage = styled.img`
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 90vw;
+  max-width: 512px;
 `
 
 const ViewImage = (tokenId: any) => {

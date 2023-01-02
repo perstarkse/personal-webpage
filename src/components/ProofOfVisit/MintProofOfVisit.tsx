@@ -40,7 +40,7 @@ const MintProofOfVisit:React.FC<IMintFunction>= (props) => {
         <div className='text-center'>
           Successfully minted your proof of visit NFT!
           <div className="d-grid">
-            <a href={`https://sepolia.etherscan.io/tx/${data?.hash}`}>Etherscan</a>
+            <a href={`https://polygonscan.com/tx/${data?.hash}`}>Polygonscan</a>
             <Button variant="secondary" className='btn btn-theme mt-2' onClick={changeParentState}>Click here to mint a punk </Button>
           </div>
         </div>

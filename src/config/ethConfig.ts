@@ -1,2 +1,2 @@
-export const ProofOfVisitAddress = "0xAff8e30C08AE17e063521E87Ddc05498108EC2bc"
-export const SynthwavePunkAddress = "0x4ff7d8b0Ff4FB22324837312A3e2fcc70108c359"
+export const ProofOfVisitAddress = "0x1dDCB645E0C83f62583aA8862E34567Ea2cc4Cae"
+export const SynthwavePunkAddress = "0xEadbd3ebf81381235E141aC2136Cf3Ace3268cca"

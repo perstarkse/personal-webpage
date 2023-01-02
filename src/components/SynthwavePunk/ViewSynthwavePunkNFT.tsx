@@ -44,7 +44,7 @@ const ViewSynthwavePunkNFT = () => {
     else if (address) {
       if (SynthwavePunkContract) {
         getPreviousLogs();
-        if (previousLogs)
+        if (previousLogs !== undefined)
           {setLatestTransactedTokenID(previousLogs[0].args![2]._hex);
           // console.log(previousLogs![0].args![2]._hex);
           }

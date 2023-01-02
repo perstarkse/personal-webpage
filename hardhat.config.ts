@@ -20,7 +20,6 @@ const config: HardhatUserConfig = {
     },
     polygon: {
       url: `https://polygon-mainnet.infura.io/v3/${INFURAAPI}`,
-      gasPrice: 1000000000,
       accounts: [`0x${PRIVATEKEY}`],
     }
   },
@@ -34,3 +33,4 @@ const config: HardhatUserConfig = {
 };
 
 export default config;
+

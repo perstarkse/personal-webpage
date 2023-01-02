@@ -2,18 +2,18 @@ import MintProofOfVisit from 'components/ProofOfVisit/MintProofOfVisit';
 import { ProofOfVisitAddress, SynthwavePunkAddress } from 'config/ethConfig';
 import React, { useEffect, useState } from 'react'
 import { erc721ABI, useAccount, useContractReads } from 'wagmi';
-import MintSynthwavePunk from '../components/SynthwavePunk/MintSynthwavePunk';
-import ViewSynthwavePunkNFT from '../components/SynthwavePunk/ViewSynthwavePunkNFT';
+import MintSynthwavePunk from './SynthwavePunk/MintSynthwavePunk';
+import ViewSynthwavePunkNFT from './SynthwavePunk/ViewSynthwavePunkNFT';
 
 const SynthwaveTokenContract = {
-address: SynthwavePunkAddress,
-abi: erc721ABI,
-  }
+  address: SynthwavePunkAddress,
+  abi: erc721ABI,
+}
 
-  const ProofOfVisitContract = {
-address: ProofOfVisitAddress,
-abi: erc721ABI,
-  }
+const ProofOfVisitContract = {
+  address: ProofOfVisitAddress,
+  abi: erc721ABI,
+}
 
 const NFTMinting = () => {
     const [mintedPOV, setMintedPOV] = useState(false)
@@ -35,20 +35,19 @@ const NFTMinting = () => {
     ],
   })
 
-  useEffect(() => {
+  useEffect(() => {  
     if (address) {
-        if (data)    
+        if (data?.[0] !== null)    
             if (Number(data?.[0]._hex) === 1) {
-            setMintedSP(true)
+              setMintedSP(true)
             }
+        if (data?.[1] !== null)  
             if (Number(data?.[1]._hex) === 1) {
-            setMintedPOV(true)
-        }
+              setMintedPOV(true)
+            }
     }
     },[data, address])
 
-  if (isConnecting) return <></>
-  if (isDisconnected) return <></>
   if (isLoading) return <></>
   if (isError) return <></>
 

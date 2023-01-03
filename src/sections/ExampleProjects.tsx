@@ -123,7 +123,7 @@ const ExampleProjects = () => {
                                     Personal webpage
                                 </FlipCardTitle>
                                 <FlipCardBread>
-                                    Page build with react, styled components. NFT build with ERC721 tokens, hardhat for testning and deployment.
+                                    Page build with React, styled components and wagmi hooks. NFT build with ERC721 tokens, hardhat for testning and deployment.
                                 </FlipCardBread>
                             </FlipCardBody>
                         </a>
@@ -137,7 +137,7 @@ const ExampleProjects = () => {
                                 </FlipCardTitle>
                                 <FlipCardBread>
                                     Made for registering time spent doing different tasks. Uses TinyDB as a
-                                    database, and matplotlib for presenting data
+                                    database and matplotlib for presenting data
                                     visually.
                                 </FlipCardBread>
                             </FlipCardBody>

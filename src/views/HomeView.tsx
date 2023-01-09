@@ -17,7 +17,7 @@ const HomeViews = styled.div`
     position: relative;
     .hidden {
         opacity: 0;
-        transition: all 1s ease-in;
+        transition: all 0.7s ease-in;
         filter: blur(5px);
         /* transform: translateY(50%); */
     }

@@ -3,7 +3,7 @@ import React from 'react'
 import { Container } from 'react-bootstrap'
 import styled from 'styled-components'
 import Logo from '../images/logo/logo-2.webp';
-import { breakpoints, fonts } from '../variables/_variables';
+import { breakpoints, fonts, colors } from '../variables/_variables';
 
 const CustomVHContainer = styled(ContainerVH100)`
     height: 100vh;
@@ -58,8 +58,19 @@ const StyledName = styled.h1`
         margin-left: 2rem;
     }
 `
+const WideChevron = styled.i`
+    font-size: 50px;
+    margin-top: 30vh;
+    cursor: pointer;
+    color: ${colors.darkWhiteEmphasis}
+    
+`
 
 const Banner = () => {
+
+    
+    
+
     return (
         <ContainerVH100>
             <StyledContainer className="d-flex align-items-center mt-3">
@@ -67,6 +78,8 @@ const Banner = () => {
             </StyledContainer>
             <StyledName>PER STARK</StyledName>
             <h2 className='mt-5 d-flex justify-content-center align-items-center'>coder / psychologist</h2>
+            <div onClick={() => { const anchor = document.querySelector('#introduction'); anchor!.scrollIntoView({ behavior: 'smooth', block: 'center' });}} className="d-flex justify-content-center align-items-center"><WideChevron className="fa-solid fa-chevron-down"></WideChevron></div>
+            
         </ContainerVH100>
     )
 }

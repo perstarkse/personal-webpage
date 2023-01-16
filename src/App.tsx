@@ -4,9 +4,8 @@ import HomeView from './views/HomeView';
 import GlobalStyle from './variables/globalStyles'
 import { WagmiConfig, createClient, configureChains } from 'wagmi'
 import { publicProvider } from 'wagmi/providers/public'
-import { polygon, sepolia } from 'wagmi/chains'
+import { polygon } from 'wagmi/chains'
 import { infuraProvider } from 'wagmi/providers/infura'
-import { alchemyProvider } from 'wagmi/providers/alchemy'
 import { CoinbaseWalletConnector } from 'wagmi/connectors/coinbaseWallet'
 import { InjectedConnector } from 'wagmi/connectors/injected'
 import { MetaMaskConnector } from 'wagmi/connectors/metaMask'
@@ -15,10 +14,10 @@ import { ConnectKitProvider } from 'connectkit';
 
 const { chains, provider, webSocketProvider } = configureChains(
   [polygon],
-  [publicProvider()],
+  [infuraProvider({apiKey: process.env.REACT_APP_INFURAAPI! }), publicProvider()],
 )
 
-// infuraProvider({apiKey: process.env.REACT_APP_INFURAAPI! }),
+
 
 const client = createClient({
   autoConnect: true,

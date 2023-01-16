@@ -53,7 +53,7 @@ const LangSkills = () => {
                         <li>Javascript/Typescript</li>
                         <li>CSS/SASS</li>
                         <li>HTML</li>
-                        <li>Bash</li>
+                        <li>Shell-scripting</li>
                         <li>C#</li>
                     </ul>
                 </StyledSkillList>

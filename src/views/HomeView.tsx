@@ -4,7 +4,6 @@ import Skills from '../sections/Skills'
 import Banner from '../sections/Banner';
 import Introduction from '../sections/Introduction';
 import ImageViewer from '../sections/ImageViewer';
-import ProofOfVisit from '../sections/NFTs';
 import ExampleProjects from '../sections/ExampleProjects';
 import Footer from 'sections/Footer';
 import styled from 'styled-components';
